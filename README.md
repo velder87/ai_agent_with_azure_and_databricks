@@ -4,6 +4,6 @@
 
   ### 1. Add ressource Azure SQL 
   
-      - Create Database
-      - Run script
+      - Create Database : instnwnd (Azure SQL Database).sql
+      - Run script : 
 
