@@ -1,6 +1,5 @@
-2) Préparer des vues “Gold” pour la démo (TOP N, tendance, forecast)
-Northwind a des dates fin 1996–1998. On se base sur ShippedDate (plus complète) ; si NULL, on retombe sur OrderDate.
-2.1 Vue des lignes de vente (détails étendus)
+-- 2) Préparer des vues “Gold” pour la démo (TOP N, tendance, forecast) Northwind a des dates fin 1996–1998. On se base sur ShippedDate (plus complète) ; si NULL, on retombe sur OrderDate.
+-- 2.1 Vue des lignes de vente (détails étendus)
 CREATE OR ALTER VIEW dbo.vw_SalesLines AS
 SELECT 
     od.OrderID,
@@ -16,7 +15,8 @@ SELECT
 FROM [Order Details] od
 JOIN Orders o        ON o.OrderID = od.OrderID
 JOIN Products p      ON p.ProductID = od.ProductID;
-2.2 Vue ventes hebdo par produit (alimentera le modèle)
+
+-- 2.2 Vue ventes hebdo par produit (alimentera le modèle)
 CREATE OR ALTER VIEW dbo.vw_WeeklySalesByProduct AS
 SELECT
     ProductID,
@@ -27,7 +27,8 @@ FROM dbo.vw_SalesLines
 GROUP BY
     ProductID, ProductName,
     DATEADD(WEEK, DATEDIFF(WEEK, 0, SalesDate), 0);
-2.3 Vue top produits rolling 8 semaines (pour l’agent SQL)
+
+-- 2.3 Vue top produits rolling 8 semaines (pour l’agent SQL)
 CREATE OR ALTER VIEW dbo.vw_TopProducts_8w AS
 WITH base AS (
   SELECT *, DATEADD(WEEK, DATEDIFF(WEEK, 0, GETDATE()), 0) AS ThisWeek
@@ -40,5 +41,5 @@ FROM base
 WHERE WeekStart >= DATEADD(WEEK, -8, ThisWeek)
 GROUP BY ProductID, ProductName
 ORDER BY SalesAmount_8w DESC;
-(Si tu veux “figer” une période cohérente avec 1997, remplace GETDATE() par '1998-03-01' par ex.)
 
+-- (Si tu veux “figer” une période cohérente avec 1997, remplace GETDATE() par '1998-03-01' par ex.)
