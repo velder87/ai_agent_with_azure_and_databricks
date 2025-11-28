@@ -11,5 +11,5 @@
 
   ### 3. Add Key Vault pour permettre à SQL Server de communiquer avec Databricks
 
-  ### 3. Add Databricks and test if we get access to SQL SERVER
+  ### 4. Add Databricks and test if we get access to SQL SERVER
 
