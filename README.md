@@ -9,3 +9,5 @@
       - Test script in cloud or in Azure studio : 
             - SELECT * FROM vw_TopProducts_8w 
 
+  ### 3. Add Key Vault pour permettre à SQL Server de communiquer avec Databricks
+
