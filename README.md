@@ -7,5 +7,5 @@
       - Create Database : instnwnd (Azure SQL Database).sql
       - Run script : store_proc_and_views.sql
       - Test script in cloud or in Azure studio : 
-            - SELECT * FROM 
+            - SELECT * FROM vw_TopProducts_8w 
 
