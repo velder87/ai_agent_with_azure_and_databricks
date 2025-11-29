@@ -14,8 +14,25 @@
             - SELECT * FROM vw_TopProducts_8w 
 
   ### 3. Add Key Vault pour permettre à SQL Server de communiquer avec Databricks
+          In Key Vault Portal, go to Object -> Secrets
+          Add role assignment to Key Vault Administrator
+  
+        SQL_USER
+        SQL_PASS
+        DATABRICKS_TOKEN
+
+        In Key Vault Portal, go to settings -> Properties to get RessourceID
+        /subscriptions/1784e47b-fcb9-4611-a4d1-46ea0da1d6b6/resourceGroups/rg-ai-agent/providers/Microsoft.KeyVault/vaults/kv-ai-agent-0001
+
+        We'll use it when creating secret scope in databricks
 
   ### 4. Add Databricks and test if we get access to SQL SERVER
+        In databricks portal, go to settings -> User -> Developper -> Access Token
+              and click on Manage -> Generate new Token ( dapi0282a7aed0106062ddb17c4ffc9331d5-3 )
+
+        Create a secret scope in Databricks
+              https://<databricks-instance>#secrets/createScope (ex : https://adb-365668266094976.16.azuredatabricks.net)
+              in this URL , replace “<databricks-instance>” with your databricks host url.
 
   ### 5. Add OpenAI Services From Azure 
         Services : Azure OpenAI
