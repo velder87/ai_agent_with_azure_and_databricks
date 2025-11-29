@@ -27,6 +27,8 @@
         We'll use it when creating secret scope in databricks
 
   ### 4. Add Databricks and test if we get access to SQL SERVER
+        Upgrade To Premium
+        Compute : Cluster Standard_EC8ads_v5
         In databricks portal, go to settings -> User -> Developper -> Access Token
               and click on Manage -> Generate new Token ( dapi0282a7aed0106062ddb17c4ffc9331d5-3 )
 
