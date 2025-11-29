@@ -36,6 +36,30 @@
               https://<databricks-instance>#secrets/createScope (ex : https://adb-365668266094976.16.azuredatabricks.net)
               in this URL , replace “<databricks-instance>” with your databricks host url.
 
+        ou bien directement via : 
+
+        # Variables à adapter
+        SUBSCRIPTION_ID="68f232ba-788d-4616-bbec-b94971a03979"
+        RESOURCE_GROUP="rg-ai-agent"
+        KEYVAULT_NAME="kv-ai-agent-0002"
+        PRINCIPAL_OID="3bbc0fbb-475d-48c0-8fb7-c70ae41bfec6"  # celui de l’erreur
+        
+        SCOPE="/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.KeyVault/vaults/$KEYVAULT_NAME"
+        
+        az role assignment create \
+          --role "Key Vault Secrets User" \
+          --assignee-object-id "$PRINCIPAL_OID" \
+          --assignee-principal-type ServicePrincipal \
+          --scope "$SCOPE"
+
+
+          For testing Servind modele endpoint 
+              {
+                "dataframe_records": [
+                  { "horizon": 6 }
+                ]
+              }
+
   ### 5. Add OpenAI Services From Azure 
         Services : Azure OpenAI
         Modele : gpt-4o-mini
